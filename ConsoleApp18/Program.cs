@@ -34,6 +34,12 @@ namespace ConsoleApp18
             string[] linh = result.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
             var lines = linh.ToList();
             lines.RemoveAll(x => x == "");
+            for (int i = 0; i < lines.Count; i++)
+            {
+                while (lines[i].StartsWith(' '))
+                    lines[i] = lines[i].Remove(0, 1);
+            }
+
 
             foreach (string line in lines)
             {
