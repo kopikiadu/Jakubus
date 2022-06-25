@@ -34,49 +34,47 @@ namespace ConsoleApp18
             new Name("tvoje máma", "tvojí mámy", "tvojí mámě", "tvojí mámu", "tvoje mámo", "tvojí mámě", "tvojí mámou"),
             new Name("Fousová", "Fousový", "Fousový", "Fousovou", "Fousová", "Fousový", "Fousovou"),
             new Name("tdymence", "tdymence", "tdymenci", "tdymenci", "tdymence", "tdymenci", "tdymencí"),
-            new Name("tvoje prdel", "tvojí prdele", "tvojí prdeli", "tvojí prdel", "tvoje prdeli", "tvojí prdeli", "tvojí prdelí")
+            new Name("tvoje prdel", "tvojí prdele", "tvojí prdeli", "tvojí prdel", "tvoje prdeli", "tvojí prdeli", "tvojí prdelí"),
+            new Name("Mars", "Marsu", "Marsu", "Mars", "Marse", "Marsu", "Marsem"),
+            new Name("guláš", "guláše", "guláši", "guláš", "guláši", "guláši", "gulášem"),
+            new Name("komínel", "komínela", "komínelovi", "komínela", "komínele", "komínelovi", "komínelem")
         }
         .ToList();
         static void Main(string[] args)
         {
-
-
-            
-            string[] locs = { "hjuhu", "tdymence", "Tomáše", "tvojí mámy", "komínela", "Brazílie" };
-            string[] things = { "tvojí mámou", "tdymencí", "gulášem", "hjuhem" };
-            string[] s1 = { "v tvojí mámě", "ve fousový", "v hjuhu", "v guláši" };
-            string[] vehs = s1.Concat(things).ToArray();
-            string[] people = { "Tomášel", "Adámel", "Fousová", "Wormíw", "Hjuh" };
-            string loc = locs[rand.Next(locs.Length)];
-            string veh = vehs[rand.Next(vehs.Length)];
-            string person = things[rand.Next(things.Length)];
-            string person2 = people[rand.Next(people.Length)];
-            string[] phrases = { $"Jedeš \ns {GetName().Instrumental} \ndo {GetName().Genitive}"
+            while (true)
+            {
+                string[] phrases = { $"Jedeš \ns {GetName().Instrumental} \ndo {GetName().Genitive}"
                     , $"Jedeš \n{GetVehicle()} \ndo {GetName().Genitive}"
                     , $"{GetName().Nominative}\njede \ns {GetName().Instrumental} \ndo {GetName().Genitive}"
                     , $"{GetName().Nominative}\n jede\n{GetVehicle()} \ndo {GetName().Genitive}"
                     , $"*Strok*"
                     , $"{GetName().Nominative}\nhjuhne\ndo {GetName().Genitive}"
-                    , $"{GetName().Nominative}\nje\n{GetName().Nominative}"};
-            string phrase = phrases[rand.Next(phrases.Length)];
-            string[] affixes = { "\nJúúúú\n", "\nHjuh\n", "\nRAF\n","\nRAF Hmmm\n","\nHmmmmmm\n", null, null, null, null};
-            string prefix = affixes[rand.Next(affixes.Length)];
-            string suffix = affixes[rand.Next(affixes.Length)];
-            string result = $"{prefix ?? ""}{phrase}{suffix ?? ""}";
-            string[] linh = result.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-            var lines = linh.ToList();
-            lines.RemoveAll(x => x == "");
-            for (int i = 0; i < lines.Count; i++)
-            {
-                while (lines[i].StartsWith(' '))
-                    lines[i] = lines[i].Remove(0, 1);
-            }
+                    , $"{GetName().Nominative}\nje\n{GetName().Nominative}"
+                    , $"{GetName().Nominative}\nje\nv {GetName().Locative}"
+                    , $"{GetName().Vocative}\nco to je"
+                    , $"{GetName().Nominative}\njede\nna {GetName().Accusative}" };
+                string phrase = phrases[rand.Next(phrases.Length)];
+                string[] affixes = { "\nJúúúú\n", "\nHjuh\n", "\nRAF\n", "\nRAF Hmmm\n", "\nHmmmmmm\n", null, null, null, null };
+                string prefix = affixes[rand.Next(affixes.Length)];
+                string suffix = affixes[rand.Next(affixes.Length)];
+                string result = $"{prefix ?? ""}{phrase}{suffix ?? ""}";
+                string[] linh = result.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                var lines = linh.ToList();
+                lines.RemoveAll(x => x == "");
+                for (int i = 0; i < lines.Count; i++)
+                {
+                    while (lines[i].StartsWith(' '))
+                        lines[i] = lines[i].Remove(0, 1);
+                }
 
 
-            foreach (string line in lines)
-            {
-                Console.WriteLine(line);
-                Console.ReadKey(true);
+                foreach (string line in lines)
+                {
+                    Console.WriteLine(line);
+                    Console.ReadKey(true);
+                }
+                Console.WriteLine();
             }
         }
 
