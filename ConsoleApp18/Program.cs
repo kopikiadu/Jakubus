@@ -8,6 +8,7 @@ namespace ConsoleApp18
 
     class Program
     {
+        static List<Name> namebank = new();
         static void Main(string[] args)
         {
             var rand = new Random();
@@ -47,6 +48,31 @@ namespace ConsoleApp18
                 Console.ReadKey(true);
             }
         }
+
+        struct Name
+        {
+            public Name(string nominative, string genitive, string dative, string accusative, string vocative, string locative, string instrumental)
+            {
+                Nominative = nominative;
+                Genitive = genitive;
+                Dative = dative;
+                Accusative = accusative;
+                Vocative = vocative;
+                Locative = locative;
+                Instrumental = instrumental;
+            }
+
+            public string Nominative { get; set; }
+            public string Genitive { get; set; }
+            public string Dative { get; set; }
+            public string Accusative { get; set; }
+            public string Vocative { get; set; }
+            public string Locative { get; set; }
+            public string Instrumental { get; set; }
+
+        }
+
+
 
 
     }
